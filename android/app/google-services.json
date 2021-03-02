@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "421561485647",
+    "project_id": "stockapp-7493a",
+    "storage_bucket": "stockapp-7493a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:421561485647:android:04a0287b6bc10204f61d3a",
+        "android_client_info": {
+          "package_name": "com.stocknotifyapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "421561485647-30fr0ir41osbiam3hi076u8cnmbbp2na.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBtXhT28QWPqe9uqFsA9qmB6JBfReXLjfs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "421561485647-30fr0ir41osbiam3hi076u8cnmbbp2na.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -6,13 +6,16 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
-    "android-release":"react-native run-android --variant=release",
+    "android-release": "react-native run-android --variant=release",
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
+    "@react-native-community/push-notification-ios": "^1.8.0",
+    "@react-native-firebase/app": "^10.8.1",
     "react": "16.13.1",
-    "react-native": "0.63.4"
+    "react-native": "0.63.4",
+    "react-native-push-notification": "^7.2.1"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",
@@ -20,6 +23,7 @@
     "@react-native-community/eslint-config": "^1.1.0",
     "@types/jest": "^25.2.3",
     "@types/react-native": "^0.63.2",
+    "@types/react-native-push-notification": "^7.0.1",
     "@types/react-test-renderer": "^16.9.2",
     "babel-jest": "^25.1.0",
     "eslint": "^6.5.1",
