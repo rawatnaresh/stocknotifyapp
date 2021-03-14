@@ -1,33 +1,41 @@
 {
   "project_info": {
-    "project_number": "421561485647",
-    "project_id": "stockapp-7493a",
-    "storage_bucket": "stockapp-7493a.appspot.com"
+    "project_number": "601646496381",
+    "project_id": "stocknotifyapp",
+    "storage_bucket": "stocknotifyapp.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:421561485647:android:04a0287b6bc10204f61d3a",
+        "mobilesdk_app_id": "1:601646496381:android:996a4e2cafae4be0754f14",
         "android_client_info": {
           "package_name": "com.stocknotifyapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "421561485647-30fr0ir41osbiam3hi076u8cnmbbp2na.apps.googleusercontent.com",
+          "client_id": "601646496381-7rfjfj490ql0c8s4vlc318kfj6rv9idq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.stocknotifyapp",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "601646496381-sg2eu9hlb826p77tkmbpfhofhc1vbc9t.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBtXhT28QWPqe9uqFsA9qmB6JBfReXLjfs"
+          "current_key": "AIzaSyCicLqxbwSW5-uCHHZMUnYjNgRpsXsn2BY"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "421561485647-30fr0ir41osbiam3hi076u8cnmbbp2na.apps.googleusercontent.com",
+              "client_id": "601646496381-sg2eu9hlb826p77tkmbpfhofhc1vbc9t.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

@@ -3,21 +3,23 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>421561485647-pqoucibe60gnhrfr1m8rj5ks70ddh7sl.apps.googleusercontent.com</string>
+	<string>601646496381-b1nb0n8fksdbasfhelru2l50iocfp9r8.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.421561485647-pqoucibe60gnhrfr1m8rj5ks70ddh7sl</string>
+	<string>com.googleusercontent.apps.601646496381-b1nb0n8fksdbasfhelru2l50iocfp9r8</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>601646496381-7rfjfj490ql0c8s4vlc318kfj6rv9idq.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
-	<string>AIzaSyBHnSDxa8u2MX48TnbsmwRf4ALVzQ8TFXI</string>
+	<string>AIzaSyCH8aQzAd34oPE0hbVLgS1Kc34BM7bkv5w</string>
 	<key>GCM_SENDER_ID</key>
-	<string>421561485647</string>
+	<string>601646496381</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.stocknotifyapp</string>
 	<key>PROJECT_ID</key>
-	<string>stockapp-7493a</string>
+	<string>stocknotifyapp</string>
 	<key>STORAGE_BUCKET</key>
-	<string>stockapp-7493a.appspot.com</string>
+	<string>stocknotifyapp.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +31,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:421561485647:ios:f881acda70ee962cf61d3a</string>
+	<string>1:601646496381:ios:9e8c57bde6cbd8bb754f14</string>
 </dict>
 </plist>
