@@ -1,14 +1,8 @@
-import * as React from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  TouchableOpacity,
-  TextInput,
-} from 'react-native';
+import React from 'react';
+import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-import {useFetchStockList} from '../../hooks/useFetchStockList';
+// import {useFetchStockList} from '../../hooks/useFetchStockList';
 
 export type ItemType = {
   id: Number;
@@ -21,79 +15,46 @@ export type ItemType = {
 
 type ItemProp = {
   item: ItemType;
-  renderAddWatchUI: boolean;
+  handleItemPress: () => void;
+  showBottomModal: (item: any) => void;
 };
 
-export const Item = ({item, renderAddWatchUI}: ItemProp) => {
-  const [minInput, handleMinInput] = React.useState('');
-  const [maxInput, handleMaxInput] = React.useState('');
-  const [showAdder, setShowAdder] = React.useState(false);
+export const Item = ({item, handleItemPress, showBottomModal}: ItemProp) => {
+  // const handleAddWatchlist = () => {
+  //   stockListing.addToWatchlist({
+  //     symbol: item.symbol,
+  //     minAmount: +minInput,
+  //     maxAmount: +maxInput,
+  //   });
+  //   setShowAdder(false);
+  // };
 
-  const stockListing = useFetchStockList();
+  const handleActionPress = React.useCallback(() => showBottomModal(item), [
+    item,
+    showBottomModal,
+  ]);
 
-  const handleAddWatchlist = () => {
-    stockListing.addToWatchlist({
-      symbol: item.symbol,
-      minAmount: +minInput,
-      maxAmount: +maxInput,
-    });
-    setShowAdder(false);
-  };
   return (
     <TouchableOpacity
       style={styles.item}
-      onPress={() => {
-        setShowAdder(!showAdder);
-      }}
+      onPress={handleItemPress}
       activeOpacity={0.5}>
-      <View style={styles.row}>
-        <View style={styles.companyLogo}>
-          <Text>Logo</Text>
-        </View>
-        <View style={styles.content}>
-          <View>
-            <Text style={styles.title}>{item.symbol}</Text>
-            <View style={styles.watchContainer}>
-              <Text style={styles.subTitle}>(6.71%)</Text>
-              {item.watched && (
-                <Icon name={'eye'} size={15} color={'#2585d9'} />
-              )}
-            </View>
-          </View>
-          <View style={styles.stockPriceContainer}>
-            <Text style={styles.stockPrice}>$6,000</Text>
+      <View style={styles.content}>
+        <View style={styles.p20}>
+          <Text style={styles.title}>{item.symbol}</Text>
+          <View style={styles.watchContainer}>
+            <Text style={styles.subTitle}>$6000</Text>
+            <Text style={styles.subTitle}>(6.71%)</Text>
           </View>
         </View>
+        <TouchableOpacity style={styles.p20} onPress={handleActionPress}>
+          <Icon
+            size={25}
+            name={item.watched ? 'remove-circle-outline' : 'add-circle-outline'}
+            color={'#2585d9'}
+          />
+        </TouchableOpacity>
       </View>
-      {renderAddWatchUI && showAdder && (
-        <View style={styles.adder}>
-          <TextInput
-            style={styles.textInput}
-            onChangeText={(text) => handleMaxInput(text)}
-            value={maxInput}
-            placeholder="max"
-            keyboardType="numeric"
-            selectionColor="black"
-            autoFocus
-          />
-          <TextInput
-            style={styles.textInput}
-            onChangeText={(text) => handleMinInput(text)}
-            value={minInput}
-            placeholder="min"
-            keyboardType="numeric"
-            selectionColor="black"
-          />
-          <View style={styles.buttonContainer}>
-            <TouchableOpacity
-              style={[styles.button]}
-              onPress={handleAddWatchlist}>
-              <Icon name={'add-circle-outline'} color={'#fff'} size={25} />
-              <Text style={styles.textStyle}>Add to watchlist</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-      )}
     </TouchableOpacity>
   );
 };
@@ -101,13 +62,9 @@ export const Item = ({item, renderAddWatchUI}: ItemProp) => {
 const styles = StyleSheet.create({
   item: {
     backgroundColor: '#e7edff',
-    padding: 20,
     marginVertical: 8,
     marginHorizontal: 16,
     borderRadius: 10,
-    flexDirection: 'column',
-  },
-  row: {
     flexDirection: 'row',
   },
   title: {
@@ -120,20 +77,14 @@ const styles = StyleSheet.create({
     fontSize: 12,
     marginRight: 10,
   },
-  companyLogo: {
-    backgroundColor: 'white',
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingHorizontal: 15,
-    paddingVertical: 20,
-    borderRadius: 10,
+  p20: {
+    padding: 20,
   },
   content: {
     flexDirection: 'row',
     flex: 1,
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginLeft: 20,
   },
   stockPriceContainer: {
     backgroundColor: '#fbfbfb',

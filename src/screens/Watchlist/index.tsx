@@ -1,41 +1,85 @@
-import * as React from 'react';
+import React, {useCallback, useMemo, useRef, useState} from 'react';
 import {StyleSheet, Text, View, FlatList, TouchableOpacity} from 'react-native';
 import {StackScreenProps} from '@react-navigation/stack';
 import {WatchlistStackParamList} from '../../navigations/WatchlistStackNavigator';
 import {MainContainer} from '../../components/MainContainer';
-import {company} from '../../data/company';
 import Icon from 'react-native-vector-icons/Ionicons';
+import {BottomSheetModal, BottomSheetModalProvider} from '@gorhom/bottom-sheet';
 
 type WatchlistProp = StackScreenProps<WatchlistStackParamList, 'Watchlist'>;
 
 import {Item, ItemType} from '../../components/StockItem';
+import {AddWatchlistContainer} from '../../components/AddWatchlistContainer';
+import {useFetchStockList} from '../../hooks/useFetchStockList';
 
 type ItemProp = {
   item: ItemType;
 };
 
 export const WatchlistScreen = ({navigation}: WatchlistProp) => {
+  const listings = useFetchStockList();
+  const [selectedItem, setSelectedItem] = useState<{
+    id: Number;
+    symbol: string;
+    securityName: string;
+    name: string;
+    activeStatus: string;
+    watched: boolean;
+  }>({
+    id: 0,
+    symbol: '',
+    securityName: '',
+    name: '',
+    activeStatus: '',
+    watched: false,
+  });
+  // ref
+  const bottomSheetModalRef = useRef<BottomSheetModal>(null);
+  // variables
+  const snapPoints = useMemo(() => ['50%', '50%'], []);
+
+  const showBottomModal = useCallback((item) => {
+    setSelectedItem(item);
+    bottomSheetModalRef.current?.present();
+  }, []);
+
+  const handleItemPress = useCallback(() => {
+    navigation.navigate('StockDetail');
+  }, [navigation]);
+
   const renderItem = ({item}: ItemProp) => (
-    <Item item={item} renderAddWatchUI={false} />
+    <Item
+      item={item}
+      handleItemPress={handleItemPress}
+      showBottomModal={showBottomModal}
+    />
   );
   return (
     <MainContainer>
-      <FlatList
-        data={company}
-        renderItem={renderItem}
-        keyExtractor={(item) => item.symbol}
-        ListHeaderComponent={
-          <View style={styles.wrapper}>
-            <Text style={styles.screenHeader}>Watchlists</Text>
-            <TouchableOpacity
-              style={[styles.addBtn]}
-              onPress={() => navigation.navigate('AddToWatchlist')}>
-              <Icon name={'add-circle-outline'} color={'#fff'} size={25} />
-              <Text style={styles.addBtnText}>ADD</Text>
-            </TouchableOpacity>
-          </View>
-        }
-      />
+      <BottomSheetModalProvider>
+        <FlatList
+          data={listings.state.listings}
+          renderItem={renderItem}
+          keyExtractor={(item) => item.symbol}
+          ListHeaderComponent={
+            <View style={styles.wrapper}>
+              <Text style={styles.screenHeader}>Watchlists</Text>
+              <TouchableOpacity
+                style={[styles.addBtn]}
+                onPress={() => navigation.navigate('AddToWatchlist')}>
+                <Icon name={'add-circle-outline'} color={'#fff'} size={25} />
+                <Text style={styles.addBtnText}>ADD</Text>
+              </TouchableOpacity>
+            </View>
+          }
+        />
+        <BottomSheetModal
+          ref={bottomSheetModalRef}
+          index={1}
+          snapPoints={snapPoints}>
+          <AddWatchlistContainer item={selectedItem} />
+        </BottomSheetModal>
+      </BottomSheetModalProvider>
     </MainContainer>
   );
 };

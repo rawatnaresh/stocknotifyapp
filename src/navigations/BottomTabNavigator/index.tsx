@@ -5,6 +5,7 @@ import {HomeStackNavigator} from '../HomeStackNavigator';
 import {ProfileStackNavigator} from '../ProfileStackNavigator';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {TouchableOpacity} from 'react-native';
+import {NepseTab} from '../TopTabNavigator';
 
 const Tab = createBottomTabNavigator();
 
@@ -24,6 +25,8 @@ export const MainBottomTabNavigator = () => {
             iconName = focused ? 'notifications' : 'notifications-outline';
           } else if (route.name === 'Profile') {
             iconName = focused ? 'person' : 'person-outline';
+          } else if (route.name === 'Nepse') {
+            iconName = focused ? 'stats-chart' : 'stats-chart-outline';
           }
 
           return (
@@ -45,6 +48,7 @@ export const MainBottomTabNavigator = () => {
         },
       }}>
       <Tab.Screen name="Home" component={HomeStackNavigator} />
+      <Tab.Screen name="Nepse" component={NepseTab} />
       <Tab.Screen name="Watchlists" component={WatchlistStackNavigator} />
       <Tab.Screen name="Profile" component={ProfileStackNavigator} />
     </Tab.Navigator>

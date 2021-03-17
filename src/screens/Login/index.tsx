@@ -28,7 +28,6 @@ export const Login = () => {
       // Sign-in the user with the credential
       return await auth().signInWithCredential(googleCredential);
     } catch (e) {
-      console.log(e, 'error');
       setState({error: 'Error', loading: false});
     }
   };
